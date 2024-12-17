@@ -19,7 +19,7 @@ export function ConfirmOrder() {
     "paymentMethod não foi encontrado. Verifique se está dentro do provider"
   );
 
-  const { cartItems } = contextQuantyProducts;
+  const { cartItems, clearCart } = contextQuantyProducts;
   const { cep, address } = viaCep;
   const { selectedMethod } = paymentMethod;
 
@@ -55,14 +55,20 @@ export function ConfirmOrder() {
         <h2>{cartTotal > 0 ? formatCurrency(total) : 0}</h2>
       </div>
       <Link
-        to={
-          cartTotal > 0 &&
-          cep.length === 8 &&
-          address.number.length > 0 &&
-          selectedMethod?.length > 0
-            ? "/success"
-            : "#"
-        }
+        to='/success'
+        onClick={(e) => {
+          if (
+            cartTotal <= 0 ||
+            cep.length !== 8 ||
+            address.number.length === 0 ||
+            !selectedMethod
+          ) {
+            e.preventDefault();
+            alert("Preencha todos os campos para continuar!");
+          } else {
+            clearCart();
+          }
+        }}
       >
         Confirmar pedido
       </Link>

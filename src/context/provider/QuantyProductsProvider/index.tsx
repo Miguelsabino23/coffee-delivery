@@ -20,6 +20,12 @@ export function QuantyProductsContextProvider({
   const [totalItemsInCart, setTotalItemsInCart] = useState(0);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
+  function clearCart() {
+    setCartItems([]);
+    setQuantities({});
+    setTotalItemsInCart(0);
+  }
+
   //Função de incremento de produtos
   function handleIncrement(id: string) {
     setQuantities((prev) => ({
@@ -120,6 +126,7 @@ export function QuantyProductsContextProvider({
         removeFromCart,
         handleIncrementCart,
         handleDecrementCart,
+        clearCart,
       }}
     >
       {children}

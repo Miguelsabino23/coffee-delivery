@@ -11,6 +11,7 @@ interface QuantyProductsContextType {
   removeFromCart: (itemId: string) => void;
   totalItemsInCart: number;
   cartItems: CartItem[];
+  clearCart: () => void;
 }
 
 export const QuantyProductsContext = createContext<
