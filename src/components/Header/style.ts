@@ -23,7 +23,7 @@ export const Aside = styled.aside`
     padding: 0.4rem;
     border-radius: 4px;
 
-    font-family: ${mixins.fonts.textS};
+    font: ${mixins.fonts.textS};
   }
 
   a:last-child {
@@ -34,5 +34,27 @@ export const Aside = styled.aside`
 
     padding: 0.4rem;
     border-radius: 4px;
+
+    position: relative;
   }
+`;
+
+export const CartItemCount = styled.span`
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font: ${mixins.fonts["tag"]};
+
+  width: 1rem;
+  height: 1rem;
+
+  background-color: ${(props) => props.theme.colors["yellow-dark"]};
+  color: ${(props) => props.theme.colors["white"]};
+
+  border-radius: 1rem;
 `;
