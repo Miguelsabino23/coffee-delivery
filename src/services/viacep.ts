@@ -7,6 +7,10 @@ export async function searchAdress(cep: string) {
     }
     return data;
   } catch (error) {
-    throw new Error(error.message || "Erro ao buscar o CEP");
+    if (error instanceof Error) {
+      throw new Error(error.message || "Erro ao buscar o CEP");
+    } else {
+      throw new Error("Erro ao buscar o CEP");
+    }
   }
 }
